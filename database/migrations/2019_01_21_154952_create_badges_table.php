@@ -18,6 +18,7 @@ class CreateBadgesTable extends Migration
             $table->string('name');
             $table->string('color')->default('#fff');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

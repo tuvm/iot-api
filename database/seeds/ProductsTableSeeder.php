@@ -11,16 +11,6 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
-            'name' => 'Unknown'
-        ]);
-        DB::table('products')->insert([
-            'name' => 'Adidas Ultraboot',
-            'price' => 1000000,
-            'promote_price' => 800000,
-            'gender_id' => 2,
-            'brand_id' => 2,
-            'badge_id' => 3
-        ]);
+        factory(App\Models\Product::class, 20)->create();
     }
 }

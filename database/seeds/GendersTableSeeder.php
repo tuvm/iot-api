@@ -12,7 +12,7 @@ class GendersTableSeeder extends Seeder
     public function run()
     {
         DB::table('genders')->insert([
-            'name' => 'Unknown'
+            'name' => 'Unisex'
         ]);
         DB::table('genders')->insert([
             'name' => 'Men'

@@ -18,10 +18,12 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('price')->default(0);
             $table->unsignedBigInteger('promote_price')->default(0);
+            $table->string('image');
             $table->unsignedInteger('gender_id')->default(1);
             $table->unsignedInteger('brand_id')->default(1);
             $table->unsignedInteger('badge_id')->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('gender_id')->references('id')->on('genders');
             $table->foreign('brand_id')->references('id')->on('brands');
