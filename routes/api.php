@@ -41,7 +41,21 @@ $api->version('v1', function (Router $api) {
         ]);
     });
 
-    $api->group(['prefix' => 'products'], function(Router $api) {
-        $api->get('gender/{id}', 'App\Http\Controllers\ProductController@getByGender');
+    $api->group([
+        'prefix' => 'public',
+        'namespace' => 'App\Http\Controllers\Main'
+    ], function(Router $api) {
+        $api->group(['prefix' => 'products'], function(Router $api) {
+            $api->get('gender/{id}', 'ProductController@getByGender');
+        });
+    });
+
+    $api->group([
+        'prefix' => 'private',
+        'namespace' => 'App\Http\Controllers\Admin'
+    ], function(Router $api) {
+        $api->group(['prefix' => 'products'], function(Router $api) {
+            $api->post('store', 'ProductController@store');
+        });
     });
 });
