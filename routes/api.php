@@ -48,14 +48,28 @@ $api->version('v1', function (Router $api) {
         $api->group(['prefix' => 'products'], function(Router $api) {
             $api->get('gender/{id}', 'ProductController@getByGender');
         });
+        $api->group(['prefix' => 'badges'], function(Router $api) {
+            $api->get('/', 'BadgeController@listBadge');
+        });
     });
 
     $api->group([
         'prefix' => 'private',
         'namespace' => 'App\Http\Controllers\Admin'
     ], function(Router $api) {
-        $api->group(['prefix' => 'products'], function(Router $api) {
-            $api->post('store', 'ProductController@store');
+        $api->group(['prefix' => 'product'], function(Router $api) {
+            $api->get('/', 'ProductController@getProducts');
+            $api->post('/store', 'ProductController@store');
+            $api->get('/{id}', 'ProductController@getProductDetail');
+        });
+        $api->group(['prefix' => 'badge'], function(Router $api) {
+            $api->get('/', 'BadgeController@list');
+        });
+        $api->group(['prefix' => 'gender'], function(Router $api) {
+            $api->get('/', 'GenderController@list');
+        });
+        $api->group(['prefix' => 'brand'], function(Router $api) {
+            $api->get('/', 'BrandController@list');
         });
     });
 });
