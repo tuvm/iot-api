@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrandsTable extends Migration
+class CreateSensorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('sensors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('type');
+            $table->string('code');
+            $table->string('description');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,8 +30,6 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('brands');
-        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('sensors');
     }
 }

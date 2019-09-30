@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGendersTable extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateGendersTable extends Migration
      */
     public function up()
     {
-        Schema::create('genders', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('area');
+            $table->string('map');
+            $table->unsignedInteger('parent_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,8 +30,6 @@ class CreateGendersTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('genders');
-        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('locations');
     }
 }
