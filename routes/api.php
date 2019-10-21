@@ -53,6 +53,7 @@ $api->version('v1', function (Router $api) {
         });
 
         $api->get('getdata', 'DataController@getdata');
+        $api->post('pushCheckList', 'DataController@pushCheckList');
         $api->get('test', 'DataController@test');
 
         $api->group(['prefix' => 'products'], function(Router $api) {

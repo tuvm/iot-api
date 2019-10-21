@@ -16,7 +16,7 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('area');
-            $table->string('map');
+            $table->string('mac');
             $table->unsignedInteger('parent_id');
             $table->timestamps();
             $table->softDeletes();

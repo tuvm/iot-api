@@ -45,6 +45,10 @@ class DataController extends Controller
         $this->a = $this->a . ']';
         return $this->a;
     }
+
+    public function pushCheckList(Request $request) {
+        var_dump($request->input());
+    }
     public function test() {
         $datatest = DB::select('SELECT * FROM locations;');
         return $datatest;
